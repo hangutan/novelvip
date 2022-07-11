@@ -1,0 +1,140 @@
+$background: #e5e5e5;
+$background-auth: linear-gradient(225deg, #8e3dff 3.21%, #4e66ff 90.77%);
+$background-auth-2: radial-gradient(183.42% 712.78% at -58.75% 200.58%, #00d7ff 0%, #06d2fc 24.89%, #18c3f2 58.91%, #34aae2 98.04%, #36a9e1 100%);
+$background-orange-3: #fd951b;
+$border-orange-3: #fd951b;
+$text-orange-3: #fd951b;
+$form-control-outline: rgb(13 182 212 / 57.5%);
+$cl-text: #353535;
+$cl-primary: #7815ff;
+$cl-warning: #ffe00c;
+$cl-error: #ff3d00;
+$cl-auth: #8e3dff;
+$cl-white: #fff;
+$cl-black: #000;
+$cl-gray: #333;
+$cl-gray-1: #19191d;
+$cl-gray-2: #f3f0fa;
+$footer-height: 36px;
+$border-radius-1: 12px;
+$border-radius-2: 20px;
+$border-radius-3: 30px;
+$shadow: 0 0 2px rgb(3 3 3 / 40%);
+$shadow-1: 0 5px 5px rgb(0 0 0 / 25%);
+$shadow-2: 0 0 10px rgb(3 3 3 / 40%);
+$shadow-3: 0 20px 27px rgb(0 0 0 / 5%);
+$shadow-4: 0 5px 10px rgb(0 0 0 / 25%);
+
+// Responsive
+// Screen size
+
+$sm: 576px;
+$md: 768px;
+$lg: 1024px;
+$xl: 1280px;
+$xxl: 1536px;
+
+// media queries
+
+@mixin Responsive($size) {
+	@if $size == SM {
+		@media only screen and (min-width: $sm) { @content; }
+	} @else if $size == MD {
+		@media only screen and (min-width: $md) { @content; }
+	} @else if $size == LG {
+		@media only screen and (min-width: $lg) { @content; }
+	} @else if $size == XL {
+		@media only screen and (min-width: $xl) { @content; }
+	} @else if $size == XXL {
+		@media only screen and (min-width: $xxl) { @content; }
+	} @else if $size == maxSM {
+		@media only screen and (max-width: $sm - 1) { @content; }
+	} @else if $size == maxMD {
+		@media only screen and (max-width: $md - 1) { @content; }
+	} @else if $size == maxLG {
+		@media only screen and (max-width: $lg - 1) { @content; }
+	} @else if $size == maxXL {
+		@media only screen and (max-width: $xl - 1) { @content; }
+	} @else if $size == maxXXL {
+		@media only screen and (max-width: $xxl - 1) { @content; }
+	}
+
+	@if $size == mSM {
+		@media only screen and (max-width: $sm) { @content; }
+	} @else if $size == mMD {
+		@media only screen and (max-width: $md) { @content; }
+	}
+}
+
+// Font style
+@mixin fontStyle($fs, $lh, $color: false, $fw: false) {
+	font-size: $fs;
+	line-height: $lh;
+
+	@if $color {
+		color: $color;
+	}
+
+	@if $fw {
+		font-weight: $fw;
+	}
+}
+
+// Button
+@mixin globalButton($type: default, $pd: 9px 20px, $font: true, $reverse: false) {
+	@apply flex items-center justify-center rounded-lg cursor-pointer select-none;
+
+	@if $reverse {
+		flex-direction: row-reverse;
+
+		& i {
+			@apply ml-2;
+		}
+	} @else {
+		& i {
+			@apply mr-2;
+		}
+	}
+
+	@if $pd {
+		padding: $pd;
+	}
+
+	@if $type == primary {
+		border: 1px solid transparent;
+		background-color: $cl-primary;
+		color: $cl-white;
+	} @else if $type == warning {
+		border: 1px solid transparent;
+		background-color: $cl-warning;
+		color: $cl-text;
+
+		& i {
+			color: $cl-primary;
+		}
+	} @else if $type == error {
+		border: 1px solid transparent;
+		background-color: $cl-error;
+		color: $cl-white;
+	} @else {
+		border: 1px solid $cl-text;
+		background-color: $cl-white;
+		color: $cl-text;
+
+		& i {
+			color: $cl-primary;
+		}
+	}
+
+	@if $font {
+		font-size: 14px;
+		line-height: 18px;
+		font-weight: bold;
+	}
+	transition: transform 0.3s, box-shadow 0.3s, background-color 0.1s, border-color 0.1s;
+
+	&:hover {
+		transform: translate(0, -2px);
+		box-shadow: 0 0 8px rgb(3 3 3 / 30%);
+	}
+}

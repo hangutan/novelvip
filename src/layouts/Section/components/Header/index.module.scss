@@ -1,0 +1,179 @@
+@import "@styles/variables.scss";
+
+.header {
+	@apply fixed top-0 inset-x-0 select-none;
+	z-index: 1000;
+	background-color: $cl-white;
+	box-shadow: $shadow;
+	transition: top 500ms ease;
+
+	&__container {
+		@apply lg:container px-4 py-2 mx-auto w-full
+			flex items-center justify-end;
+
+		@screen lg {
+			@apply justify-between py-4;
+		}
+	}
+
+	&__brand {
+		@apply hidden lg:flex relative cursor-pointer;
+	}
+
+	&__menu {
+		@apply flex lg:static lg:-mx-3;
+
+		@include Responsive(maxLG) {
+			@apply fixed inset-x-0 bottom-0
+				justify-evenly px-4 pb-2 pt-1;
+			background-color: $cl-white;
+			box-shadow: $shadow;
+		}
+
+		&-item {
+			@apply lg:mx-3;
+		}
+
+		&-item.mobile {
+			@apply flex lg:hidden;
+		}
+
+		&-link {
+			@apply relative flex flex-col items-center
+				p-1 text-sm font-bold transition-all duration-200
+				lg:p-2 lg:text-base lg:flex-row;
+			color: $cl-text;
+
+			> i {
+				@apply lg:mr-2;
+				color: $cl-primary;
+			}
+
+			> span {
+				@include Responsive(maxLG) {
+					@apply mt-1;
+				}
+			}
+
+			&::before {
+				@apply absolute rounded w-0 bottom-0 left-1/2
+					transition-all duration-200;
+				content: "";
+				height: 3px;
+				background-color: $cl-primary;
+			}
+
+			&:hover,
+			&.active {
+				color: $cl-primary;
+
+				&::before {
+					@apply w-full left-0;
+				}
+			}
+		}
+
+		&.active {
+			@apply left-0;
+		}
+	}
+
+	&__btn-group {
+		@apply flex items-center h-8;
+	}
+
+	&__btn {
+		& + & {
+			@apply ml-4;
+		}
+
+		&.signup {
+			@include globalButton;
+
+			@include Responsive(maxLG) {
+				padding: 6px 16px;
+			}
+		}
+
+		&.signin {
+			@include globalButton(primary);
+
+			@include Responsive(maxLG) {
+				padding: 6px 16px;
+			}
+		}
+	}
+
+	&__user {
+		@apply flex;
+
+		&-notify {
+			@apply flex items-center mr-4;
+			color: $cl-primary;
+		}
+
+		&-avatar {
+			@apply relative w-8 h-8 rounded-full overflow-hidden
+				cursor-pointer border-transparent;
+			border-width: 1px;
+			background-color: $cl-primary;
+
+			span,
+			img {
+				@apply rounded-full;
+			}
+		}
+	}
+}
+
+.user-menu {
+	@apply w-64 md:w-72 rounded-lg overflow-hidden p-3 pt-6;
+	background-color: #fdfdfd;
+	box-shadow: 0 0 10px 1px rgb(0 0 0 / 20%);
+
+	&__separate {
+		@apply my-2 bg-gray-200;
+		height: 1px;
+	}
+
+	&__info {
+		@apply grid justify-items-center;
+	}
+
+	&__avatar {
+		@apply relative rounded-xl overflow-hidden
+			mb-2 w-16 h-16
+			md:mb-3
+			lg:mb-4 lg:w-20 lg:h-20;
+		box-shadow: 0 0 5px 1px rgb(0 0 0 / 10%);
+	}
+
+	&__name {
+		@apply max-w-full text-lg font-bold uppercase truncate;
+	}
+
+	&__email {
+		@apply max-w-full text-base font-medium truncate;
+	}
+
+	&__coin {
+		@apply text-xl font-bold;
+	}
+
+	&__link {
+		@apply grid grid-flow-col justify-start items-center
+			p-2 rounded-md font-semibold;
+		transition: all 0.3s ease;
+		color: $cl-text;
+
+		&:hover {
+			@apply bg-blue-100;
+			color: $cl-primary;
+		}
+
+		& > i {
+			@apply mr-2;
+			color: $cl-primary;
+		}
+	}
+}

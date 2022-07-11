@@ -1,0 +1,243 @@
+@import '@styles/variables.scss';
+
+.recharge {
+	&__container {
+		@apply container mx-auto px-4 py-5;
+	}
+	
+	&__wrapper {
+		@apply rounded-xl overflow-hidden;
+		min-height: 400px;
+		background-color: #fff;
+		box-shadow: $shadow-1;
+	}
+
+    &__tab {
+        @apply grid grid-cols-2;
+        border-bottom: 1px solid #4E66FF;
+
+        &-pane {
+			@apply px-4 py-2 font-bold text-sm select-none cursor-pointer
+			sm:px-6 sm:py-3 sm:text-base
+			md:px-10 md:py-5 md:text-lg;
+            color: #4E66FF;
+
+			&.active {
+				color: #fff;
+				background: linear-gradient(225deg, #8E3DFF 3.21%, #4E66FF 90.77%);
+			}
+        }
+    }
+}
+
+.detail {
+	@apply px-5 py-8
+	text-sm space-y-6
+	lg:text-base md:space-y-8;
+	background-color: $cl-white;
+	border-radius: $border-radius-2;
+
+	&__method {
+		@apply grid gap-4 sm:gap-5 md:gap-6 justify-center sm:justify-start;
+		grid-template-columns: auto auto;
+	}
+	
+	&__icon {
+		@mixin icon {
+			@apply w-32 sm:w-36 md:w-40 max-w-full relative opacity-50
+			border-2 border-solid border-transparent;
+			aspect-ratio: 1/1;
+			border-radius: $border-radius-2;
+			cursor: pointer;
+		}
+		
+		&-bank {
+			@include icon;
+			background-color: #F2F2F2;
+
+			&.active {
+				@apply opacity-100;
+				border-color:#1FAB89;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			}
+		}
+
+		&-momo {
+			@include icon;
+			background-color: #F0F4FF;
+
+			&.active {
+				@apply opacity-100;
+				border-color:#A51F68;
+				box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+			}
+		}
+	}
+
+	&__info {
+		@apply grid gap-2 grid-cols-1
+		sm:gap-5 md:gap-8 max-w-4xl;
+		@screen md {
+			grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
+		}
+
+		&.momo > span {
+			@apply md:col-span-2;
+		}
+
+		&-qrcode {
+			@apply grid relative sm:row-span-3 justify-self-center;
+			height: 200px;
+			aspect-ratio: 1/1;
+		}
+
+		&.momo &-qrcode {
+			border: 2px solid #A51F68;
+		}
+		&.bank &-qrcode {
+			border: 2px solid #1FAB89;
+		}
+
+		&-amount {
+			@apply grid gap-2;
+
+			& > input {
+				@apply px-2 py-1 text-sm rounded-lg
+				md:px-4 md:py-2 md:text-base md:rounded-2xl;
+				background-color: #F2F2F2;
+				box-shadow: inset 0px 2px 2px rgba(0, 0, 0, 0.25);
+			}
+		}
+
+		&-confirm {
+			@apply flex self-end gap-2 font-medium
+			py-2 text-sm
+			md:py-3 lg:text-base;
+		}
+
+		&-message {
+			@apply md:col-span-3;
+			& > div {
+				@apply grid gap-2 items-center mt-2 sm:mt-3 md:mt-4;
+				grid-template-columns: minmax(0, 1fr) auto;
+	
+				& > input {
+					@apply px-4 py-2 text-sm rounded-xl
+					md:px-6 md:py-3 md:text-base md:rounded-2xl;
+					background-color: #F2F2F2;
+					box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
+				}
+	
+				& > button {
+					@apply flex items-center justify-center
+					gap-2 font-bold px-4 py-2 text-sm rounded-xl
+					md:px-6 md:py-3 md:text-base md:rounded-2xl;
+					color: $cl-white;
+					background: $background-auth-2;
+					box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+				}
+			}
+		}
+	}
+
+	&__note {
+		@apply xl:max-w-4xl text-xs sm:text-sm;
+		& > p {
+			@apply font-medium;
+			& > a {
+				@apply font-bold;
+				color: #36A9E1;
+			}
+		}
+	}
+}
+
+.history {
+	@apply p-4;
+
+	[class*='ant-table-cell'] {
+		@apply px-3 py-2
+		sm:px-4 sm:py-3
+		lg:py-4;
+	}
+
+	thead [class*='ant-table-cell'] {
+		@apply bg-transparent text-sm md:text-base;
+		color: #8392AB;
+	}
+
+	tbody [class*='ant-table-cell'] {
+		@apply font-medium;
+	}
+
+	&__table-footer {
+		@apply grid justify-end mt-4;
+	}
+
+	.table-pagination {
+		@apply flex rounded-lg;
+		background: #F2F2F2;
+
+		.square {
+			@apply flex items-center justify-center overflow-hidden
+			text-sm md:text-base text-center cursor-pointer rounded-lg;
+			height: $footer-height;
+			width: $footer-height;
+
+			&.active {
+				background: #695FD6;
+				color: $cl-white;
+			}
+
+			&:hover {
+				background: rgba($color: #695FD6, $alpha: 0.7);
+			}
+		}
+
+		.input-page {
+			@apply w-full h-full text-center font-bold;
+			background: #695FD6;
+			color: $cl-white;
+		}
+	}
+}
+
+// Custom status
+.custom-tag {
+	position: relative;
+	border-radius: 999px;
+    min-width: 70px;
+    text-align: center;
+    padding: 1px 12px 1px 26px;
+
+	&::before {
+		content: '';
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		border-radius: 999px;
+		left: 8px;
+		top: 50%;
+		transform: translateY(-50%);
+	}
+
+	&[class*='success']::before {
+		background-color: #52c41a;
+	}
+
+	&[class*='processing']::before {
+		background-color: #1890ff;
+	}
+
+	&[class*='error']::before {
+		background-color: #f5222d;
+	}
+
+	&[class*='warning']::before {
+		background-color: #fa8c16;
+	}
+
+	&[class*='default']::before {
+		background-color: #000000d9;
+	}
+}

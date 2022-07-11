@@ -1,0 +1,21 @@
+@import '@styles/variables.scss';
+
+.tooltip {
+	[class~="ant-tooltip-arrow"] {
+		display: none;
+	}
+
+	[class~="ant-tooltip-inner"] {
+		@apply rounded-md shadow-xl;
+		background-color: #F3EBFF; //rgba(142, 61, 255, 0.1)
+		backdrop-filter: blur(2px);
+		color: #4834d4;
+	}
+
+	$sizes: xs, sm, md, lg, xl, 2xl, 3xl, 4xl, 5xl;
+	@each $size in $sizes {
+		&__#{$size} {
+			@apply max-w-#{$size};
+		}
+	}
+}

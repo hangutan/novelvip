@@ -1,0 +1,22 @@
+@media screen and (min-width: 1280px) {
+    .wrapper-week {
+        background-image: url('../../assets/img/table/background-violet.png');
+        background-position: top right;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+@media screen and (min-width: 1280px) {
+    .wrapper-month {
+        background-image: url('../../assets/img/table/background-orange.png');
+        background-position: top right;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}
+
+.wrapper-week, .wrapper-month {
+    transition: .75s;
+    min-height: 90vh;
+}

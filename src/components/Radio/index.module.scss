@@ -1,0 +1,60 @@
+@import "@styles/variables.scss";
+
+// .radio {
+// }
+
+.default,
+.button {
+	@apply relative py-4;
+
+	.body {
+		@apply grid border-b-2 pb-1 pt-2 w-full
+			grid-cols-2 gap-2
+			md:grid-cols-4 md:gap-x-8 md:gap-y-4;
+		border-color: #d9d9d9;
+		transition: all 0.3s;
+
+		&:hover,
+		&:focus {
+			border-color: #40a9ff;
+		}
+
+		&.error:hover,
+		&.error:focus {
+			border-color: $cl-error;
+		}
+	}
+}
+
+.button {
+	.body {
+		& > label[class~="ant-radio-button-wrapper"] {
+			@apply border-none w-full overflow-hidden
+				text-center shadow-none font-medium;
+			background-color: #f0f4ff;
+			color: initial;
+			border-radius: 5px;
+			transition: all 0.3s;
+		}
+
+		& > label[class~="ant-radio-button-wrapper-checked"] {
+			background-color: #8e3dff;
+			color: $cl-white;
+		}
+	}
+}
+
+.child {
+	@apply mt-2;
+}
+
+.title {
+	@apply absolute left-0 transition-all
+		top-3 text-sm text-gray-800 font-bold;
+	transform: translateY(-50%);
+}
+
+.text-error {
+	@apply absolute text-xs font-medium bottom-0 left-0;
+	color: $cl-error;
+}

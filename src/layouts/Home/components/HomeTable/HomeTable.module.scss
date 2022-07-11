@@ -1,0 +1,45 @@
+@import "@styles/variables.scss";
+
+.homeTable {
+	margin-top: 134px;
+	margin-bottom: 134px;
+
+	&__title {
+		font-weight: bold;
+		font-size: 40px;
+		line-height: 50px;
+		text-align: center;
+		color: #c60bcc;
+		margin-bottom: 18px;
+	}
+
+	&__blTable {
+		@apply grid lg:grid-cols-2 -mx-4;
+
+		> div {
+			@apply mx-4 mt-8;
+		}
+	}
+}
+
+@include Responsive(mMD) {
+	.homeTable {
+		margin-top: 80px;
+		margin-bottom: 80px;
+
+		&__title {
+			@apply text-2xl;
+		}
+	}
+}
+
+@include Responsive(mSM) {
+	.homeTable {
+		margin-top: 70px;
+		margin-bottom: 70px;
+
+		&__title {
+			@apply text-xl;
+		}
+	}
+}

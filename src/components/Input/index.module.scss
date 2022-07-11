@@ -1,0 +1,40 @@
+@import "@styles/variables.scss";
+
+.wrapper {
+	@apply relative pb-4;
+
+	.label {
+		@apply relative text-sm font-bold;
+	}
+
+	.input {
+		@apply shadow-none px-5 py-2.5 font-medium mt-2;
+		background-color: $cl-gray-2;
+		border: 1px solid $cl-gray-2;
+		border-radius: 10px;
+		transition: 0.5s;
+
+		> input {
+			@apply bg-transparent;
+		}
+
+		&:active,
+		&:hover,
+		&:focus {
+			border-color: $cl-primary;
+		}
+	}
+
+	textarea.input {
+		transition: all 0.5s, height 0s;
+	}
+
+	input {
+		@apply font-medium;
+	}
+}
+
+.text-error {
+	@apply absolute text-xs font-medium bottom-0 left-0;
+	color: $cl-error;
+}

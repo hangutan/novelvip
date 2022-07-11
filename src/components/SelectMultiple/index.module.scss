@@ -1,0 +1,76 @@
+@import "@styles/variables.scss";
+
+.select {
+	@apply relative pb-4;
+
+	&__select {
+		@apply flex overflow-hidden mt-2;
+		background-color: $cl-gray-2;
+		border: 1px solid $cl-gray-2;
+		border-radius: 10px;
+		transition: 0.5s;
+		padding: 5px 0;
+
+		[class~="ant-select-selector"] {
+			@apply w-full;
+		}
+
+		&:active,
+		&:hover,
+		&:focus {
+			border-color: $cl-primary;
+		}
+
+		&[class~="ant-select-disabled"] {
+			@apply border-transparent opacity-50;
+		}
+	}
+
+	[class~="ant-select-selection-item"] {
+		background-color: $cl-white;
+		padding: 4px 4px 4px 8px;
+		height: unset;
+	}
+
+	[class~="ant-select-selection-search-input"],
+	[class~="ant-select-selection-item"] {
+		@apply text-sm font-medium;
+	}
+
+	%icon {
+		@apply w-6 h-6 flex -mt-3 right-2 bg-transparent;
+		color: $cl-primary;
+	}
+
+	[class~="ant-select-arrow"] {
+		@extend %icon;
+	}
+
+	[class~="ant-select-clear"] {
+		@extend %icon;
+		background-color: $cl-gray-2;
+	}
+
+	.search {
+		@apply hidden;
+	}
+
+	[class~="ant-select-open"] {
+		& .search {
+			@apply block;
+		}
+
+		& .expand_more {
+			@apply hidden;
+		}
+	}
+
+	.title {
+		@apply relative text-sm font-bold;
+	}
+}
+
+.text-error {
+	@apply text-xs font-bold;
+	color: $cl-error;
+}

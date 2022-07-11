@@ -1,0 +1,75 @@
+@import "@styles/variables.scss";
+
+.list {
+	margin-bottom: 10px;
+}
+
+.item {
+	@apply grid items-center text-xs lg:text-sm font-medium text-center mb-2 py-2 px-3;
+	grid-template-columns: minmax(0, 2fr) repeat(2, minmax(0, 1fr));
+	background: $cl-gray-2;
+	border-radius: 10px;
+	color: $cl-text;
+
+	@include Responsive(MD) {
+		grid-template-columns: minmax(0, 2fr) repeat(3, minmax(0, 1fr)) minmax(0, 2fr) minmax(0, 1fr);
+	}
+
+	& > div {
+		@apply mx-1;
+	}
+
+	&__user {
+		@apply flex items-center;
+
+		> span {
+			@apply flex-none;
+		}
+	}
+
+	&__avt {
+		border-radius: 27px;
+	}
+
+	&__name {
+		margin-left: 0.5rem;
+		font-weight: 700;
+		color: $cl-primary;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
+
+	&__status {
+		font-weight: 600;
+		border-radius: 10px;
+		padding: 8px 16px;
+
+		&.primary {
+			background-color: $cl-primary;
+			color: $cl-white;
+		}
+
+		&.success {
+			background-color: #9aff6a;
+			color: $cl-text;
+		}
+
+		&.reject {
+			background-color: $cl-error;
+			color: $cl-white;
+		}
+	}
+
+	&__dlNone {
+		@apply hidden md:block;
+	}
+
+	&__textLeft {
+		text-align: left;
+	}
+
+	&__textRight {
+		text-align: right;
+	}
+}

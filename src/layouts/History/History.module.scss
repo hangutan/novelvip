@@ -1,0 +1,51 @@
+@import "@styles/variables.scss";
+
+.history {
+	@apply container p-5 mx-auto;
+	flex: 1;
+	overflow-y: scroll;
+	overflow: hidden;
+
+	&__title {
+		font-weight: 700;
+		font-size: 16px;
+		line-height: 20px;
+		color: #000;
+		padding-bottom: 10px;
+	}
+}
+
+.pagination {
+	text-align: end;
+
+	&__a {
+		&-active {
+			background: $cl-primary !important;
+			color: #fff !important;
+		}
+
+		&-left {
+			border-top-left-radius: 10px;
+			border-bottom-left-radius: 10px;
+		}
+
+		&-right {
+			border-top-right-radius: 10px;
+			border-bottom-right-radius: 10px;
+		}
+	}
+}
+
+.pagination ul li a {
+	display: inline-block;
+	height: 29px;
+	line-height: 27px;
+	padding: 0 10px;
+	border-right: none;
+	background-color: #fff;
+	text-align: center;
+	color: #555;
+	font-size: 13px;
+	font-weight: bold;
+	transition: .3s;
+}

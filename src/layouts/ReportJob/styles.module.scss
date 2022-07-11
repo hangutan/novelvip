@@ -1,0 +1,47 @@
+@import "@styles/variables.scss";
+
+.report {
+	@apply container mx-auto my-5 p-5;
+	border-radius: $border-radius-1;
+
+	&__form {
+		@apply p-5 max-w-full mx-auto;
+		width: 850px;
+		border-radius: 10px;
+		background-color: $cl-gray-2;
+		border: 1px solid #000;
+
+		&-group {
+			@apply mt-4;
+
+			> p {
+				@apply text-sm font-bold mb-2;
+			}
+		}
+
+		&-input {
+			@apply px-4 py-2.5 font-medium text-sm;
+			background-color: $cl-white !important;
+			border-radius: 10px;
+			color: #000;
+		}
+	}
+
+	.action {
+		@apply flex justify-end mt-8;
+
+		> button + button {
+			@apply ml-4;
+		}
+	}
+
+	.back__button {
+		@include globalButton;
+		@apply w-full lg:w-80 max-w-full;
+	}
+
+	.report__button {
+		@include globalButton(primary);
+		@apply w-full lg:w-80 max-w-full;
+	}
+}

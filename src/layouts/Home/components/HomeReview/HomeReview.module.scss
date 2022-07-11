@@ -1,0 +1,48 @@
+@import "@styles/variables.scss";
+
+.homeReview {
+	@apply w-full text-center;
+
+	&__bgImg1 {
+		@apply relative max-w-full mx-auto w-full lg:w-4/5;
+
+		&-img1 {
+			z-index: 1;
+		}
+	}
+
+	&__bgOpacity {
+		@apply absolute w-full bottom-0 h-12 sm:h-20 md:h-32 lg:h-40;
+		z-index: 2;
+		background-image: linear-gradient(rgb(255 255 255 / 0%) 0%, rgb(255 255 255 / 50%) 20%, rgb(255 255 255 / 95%) 60%, rgb(255 255 255 / 100%) 100%);
+	}
+
+	&__bgImg2 {
+		@apply -mt-8 sm:-mt-16 md:-mt-24 lg:-mt-36 max-w-full mx-auto w-full lg:w-3/5;
+
+		&-img2 {
+			z-index: 3;
+		}
+	}
+
+	&__bgButton {
+		@apply mt-5 flex flex-col sm:flex-row justify-center;
+		margin-top: 20px;
+
+		&-btn {
+			@include globalButton(warning, false, false);
+			@apply inline-flex p-2.5 md:p-4 mx-auto md:m-0 max-w-full
+				text-sm md:text-base lg:text-lg font-bold;
+			color: $cl-primary;
+			width: 300px;
+
+			& + & {
+				@apply sm:ml-4 lg:ml-8;
+
+				@include Responsive(maxSM) {
+					@apply mt-4;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,223 @@
+@import "@styles/variables.scss";
+
+.bg_user {
+	background: $cl-gray-2;
+	min-height: calc(100% - 88px);
+
+	@include Responsive(MD) {
+		min-height: calc(100% - 62px);
+	}
+}
+
+.user {
+	@apply container grid p-5 mx-auto
+		lg:grid-cols-3;
+
+	&__left {
+		@apply lg:col-span-2 lg:mr-2.5;
+	}
+
+	&__right {
+		@apply lg:ml-2.5 mt-5 lg:mt-0;
+	}
+
+	&__cover {
+		@apply relative;
+
+		&-img {
+			@apply relative w-full h-60 md:h-48 lg:h-36 xl:h-24;
+
+			& img {
+				border-radius: 10px;
+			}
+		}
+
+		&-info {
+			@apply absolute inset-x-2.5 top-2.5 flex
+				flex-col justify-between
+				md:flex-row lg:justify-end;
+
+			&-item {
+				@apply flex items-center justify-center
+					w-full p-2 text-sm font-medium
+					lg:w-auto lg:p-2 lg:text-xs
+					2xl:py-2.5 2xl:px-5 2xl:text-sm;
+				border-radius: 10px;
+				background-color: #fff;
+
+				& + & {
+					@apply md:ml-2 mt-2 md:mt-0;
+				}
+
+				& i {
+					@apply mr-1;
+					color: $cl-primary;
+				}
+			}
+		}
+	}
+
+	&__avatar {
+		@apply grid grid-cols-1 items-center;
+
+		@include Responsive(LG) {
+			grid-template-columns: auto minmax(0, 1fr) auto;
+		}
+
+		&-img {
+			@apply relative mx-auto rounded-full
+				w-40 h-40 -mt-20
+				lg:ml-5 lg:mr-0;
+			border: 8px solid #fff;
+
+			@include Responsive(LG) {
+				margin-top: -85px;
+				width: 170px;
+				height: 170px;
+			}
+
+			&-upload {
+				@apply absolute bottom-0 right-0 flex rounded-full;
+				padding: 5px;
+				background-color: #ffdfdf;
+				transition: 0.3s;
+
+				&:hover {
+					transform: translate(0, -2px);
+					box-shadow: 0 0 10px rgb(3 3 3 / 30%);
+				}
+
+				input {
+					@apply absolute inset-0 cursor-pointer opacity-0;
+
+					&::-ms-browse {
+						display: none;
+					}
+
+					&::-webkit-file-upload-button,
+					&::file-selector-button {
+						display: none;
+					}
+				}
+			}
+		}
+
+		&-name {
+			@apply text-xs md:text-sm font-medium text-center mt-3
+				lg:text-left lg:mt-0 lg:mx-8;
+
+			p {
+				@apply text-base md:text-lg font-bold truncate max-w-full;
+			}
+		}
+
+		&-btn {
+			&-default {
+				@include globalButton(default, false);
+				@apply w-80 justify-self-center max-w-full p-2 mt-3
+					lg:w-40 lg:mt-0;
+			}
+
+			&-warning {
+				@include globalButton(warning, false);
+				@apply w-80 justify-self-center max-w-full p-2 mt-3
+					lg:w-40 lg:mt-0;
+			}
+		}
+	}
+
+	&__content {
+		@apply flex flex-wrap font-medium mt-5;
+		margin-left: -0.3125rem;
+		margin-right: -0.3125rem;
+
+		&.active {
+			@apply grid md:grid-cols-2;
+
+			@include Responsive(XL) {
+				grid-template-columns: minmax(0, 2fr) minmax(0, 3fr) minmax(0, 5fr);
+			}
+		}
+	}
+}
+
+.detail {
+	@apply text-sm font-medium;
+	margin: 0.3125rem;
+	background: #fff;
+	border-radius: 10px;
+	padding: 10px;
+
+	&__content {
+		background: $cl-gray-2;
+		border-radius: 10px;
+		padding: 8px 10px;
+		margin-top: 5px;
+
+		&-text {
+			@apply text-sm font-bold;
+			color: $cl-text;
+		}
+	}
+}
+
+.editing {
+	@apply p-4 pb-0;
+	margin: 0.3125rem;
+	background: #fff;
+	border-radius: 10px;
+
+	&__name {
+		@apply font-medium;
+		color: $cl-text;
+	}
+
+	&__date {
+		@apply mt-2 w-full mb-4;
+		padding: 9px;
+		border-radius: 10px;
+		background-color: $cl-gray-2 !important;
+		border-color: transparent;
+
+		&:hover,
+		&:active,
+		&:focus,
+		&[class~="ant-picker-focused"] {
+			border-color: $cl-primary;
+			box-shadow: none;
+		}
+
+		[class~="ant-picker-input"] {
+			@apply flex-row-reverse;
+
+			input {
+				@apply font-medium;
+			}
+
+			[class~="ant-picker-suffix"] {
+				@apply ml-0 mr-1.5;
+				color: $cl-text;
+			}
+		}
+	}
+
+	&.name {
+		@apply md:col-span-2;
+	}
+
+	&__gender {
+		@apply flex py-2.5 mt-2 mb-4;
+
+		&-item {
+			@apply flex items-center cursor-pointer;
+
+			& + & {
+				@apply ml-3;
+			}
+
+			> i {
+				@apply mr-1;
+			}
+		}
+	}
+}

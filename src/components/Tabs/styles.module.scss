@@ -1,0 +1,42 @@
+@import "@styles/variables.scss";
+
+.tabs {
+	@apply text-center mt-2;
+	background-color: $cl-white;
+
+	&__container {
+		@apply flex items-stretch justify-center
+			relative h-full w-0 md:w-full mx-auto;
+	}
+
+	&__item {
+		@apply text-center z-20 m-1.5 md:m-2;
+		overflow: hidden;
+		flex-basis: 100%;
+		word-break: break-word;
+
+		&.default {
+			@include globalButton(default);
+
+			@include Responsive(maxMD) {
+				padding: 6px;
+			}
+		}
+
+		&.active {
+			@include globalButton(primary);
+
+			@include Responsive(maxMD) {
+				padding: 6px;
+			}
+		}
+	}
+
+	&__wrap {
+		@apply absolute h-full z-10 top-0 left-0
+			transition-all duration-300 delay-100;
+		background-color: $cl-gray-2;
+		border-radius: 10px 10px 0 0;
+		box-shadow: -2px -2px 3px rgb(3 3 3 / 15%);
+	}
+}

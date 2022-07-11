@@ -1,0 +1,50 @@
+@import "@styles/variables.scss";
+
+%button {
+	width: 95%;
+	margin: 10px auto;
+	padding: 10px;
+	text-transform: uppercase;
+	transition: 0.5s;
+	box-shadow: 0 0 20px #eee;
+}
+
+.button-info {
+	@include globalButton(default, false);
+	@extend %button;
+}
+
+.button-warning {
+	@include globalButton(warning, false);
+	@extend %button;
+}
+
+.button-danger {
+	@include globalButton(error, false);
+	@extend %button;
+}
+
+.button-confirm {
+	@include globalButton(primary, false);
+	@extend %button;
+}
+
+.button-info-reverse {
+	@include globalButton(default, false, true, true);
+	@extend %button;
+}
+
+.button-warning-reverse {
+	@include globalButton(warning, false, true, true);
+	@extend %button;
+}
+
+.button-danger-reverse {
+	@include globalButton(error, false, true, true);
+	@extend %button;
+}
+
+.button-confirm-reverse {
+	@include globalButton(primary, false, true, true);
+	@extend %button;
+}

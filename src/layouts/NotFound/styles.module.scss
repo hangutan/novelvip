@@ -1,0 +1,37 @@
+@import "@styles/variables.scss";
+
+.main {
+	@apply w-full h-full p-4
+		flex flex-col items-center justify-evenly;
+	color: $cl-text;
+
+	&__header {
+		@apply flex items-center font-bold;
+		font-size: 12rem;
+		line-height: 1;
+
+		@include Responsive(maxSM) {
+			font-size: 10rem;
+		}
+
+		&-icon {
+			@apply flex w-32 h-32 sm:w-40 sm:h-40;
+
+			& + & {
+				@apply ml-4;
+			}
+		}
+	}
+
+	&__body {
+		@apply text-base sm:text-xl font-semibold text-center;
+	}
+
+	&__footer {
+		& > button {
+			@include globalButton(primary, false, false);
+			@apply px-8 py-4 text-lg font-bold
+				sm:px-10 sm:py-5 sm:text-xl;
+		}
+	}
+}

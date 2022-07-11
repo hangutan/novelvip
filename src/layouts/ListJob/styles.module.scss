@@ -1,0 +1,122 @@
+@import "@styles/variables.scss";
+
+.wrapper-list-job {
+	background-color: $cl-gray-2;
+	box-shadow: $shadow;
+	min-height: calc(100% - 88px);
+
+	@include Responsive(MD) {
+		min-height: calc(100% - 62px);
+	}
+
+	&.create-job {
+		@apply flex items-center justify-center;
+	}
+
+	.job-container {
+		@apply container grid mx-auto p-2.5 h-full;
+		grid-template-rows: auto minmax(0, 1fr);
+	}
+
+	.job-information {
+		@apply flex mt-4 lg:-mx-3;
+
+		.job-list {
+			@apply w-full mx-auto lg:mx-3;
+			max-width: 450px;
+
+			&::-webkit-scrollbar {
+				appearance: none;
+				background-color: #eee;
+				width: 4px;
+				height: 8px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background-color: rgb(142 61 255 / 50%);
+			}
+
+			.job-list-empty {
+				@apply mt-8 flex flex-col items-center font-bold;
+				color: $cl-primary;
+
+				span {
+					font-size: 60px;
+					margin-bottom: 10px;
+				}
+			}
+		}
+
+		.wrapper-job-detail {
+			@apply hidden lg:block w-full flex-1 lg:mx-3;
+		}
+	}
+}
+
+.pre-create {
+	@apply grid w-full m-4 md:m-5 p-4 md:p-8 rounded-xl;
+	background: $cl-white;
+	box-shadow: 0 0 30px 2px rgb(48 48 48 / 20%);
+	max-width: 630px;
+
+	@include Responsive(MD) {
+		grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+	}
+
+	.img {
+		margin: 0 auto;
+		width: 100%;
+		max-width: 230px;
+	}
+
+	.right {
+		@apply flex flex-col justify-between md:ml-3;
+	}
+
+	.des {
+		@apply font-medium;
+
+		p:first-child {
+			@apply text-lg font-bold mb-2;
+		}
+	}
+
+	.button {
+		@include globalButton(warning);
+		@apply ml-auto mt-4;
+
+		@include Responsive(maxMD) {
+			@apply mr-auto w-full max-w-sm;
+		}
+	}
+}
+
+.wrapper-job-detail-modal {
+	div[class~="ant-modal-content"] {
+		@apply p-0;
+		border-radius: $border-radius-1;
+	}
+
+	div[class~="ant-modal-body"] {
+		@apply p-0;
+	}
+
+	div[class~="ant-modal-header"] {
+		border-top-left-radius: $border-radius-1;
+		border-top-right-radius: $border-radius-1;
+	}
+
+	div[class~="ant-modal-close"] {
+		top: 5px;
+	}
+
+	.close-icon {
+		width: 20px;
+
+		&:hover {
+			background: #ccc;
+			padding: 2px;
+			border-radius: 3px;
+		}
+	}
+}

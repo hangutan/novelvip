@@ -1,0 +1,337 @@
+@import "@styles/variables.scss";
+
+@mixin button {
+	@apply py-3 px-6 w-full sm:w-48 rounded-lg border-none
+		grid justify-center items-center;
+}
+
+.create-job-container {
+	@apply container mx-auto my-5 md:my-9;
+}
+
+.create-job-wrapper {
+	@apply mx-3 md:mx-4;
+	min-height: 400px;
+	background-color: #fff;
+	border-radius: $border-radius-1;
+	box-shadow: $shadow-1;
+}
+
+.tab-create {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	border-bottom: 1px solid #4e66ff;
+
+	.tab-pane {
+		padding: 20px 40px;
+		font-weight: bold;
+		font-size: 18px;
+		color: #4e66ff;
+
+		>span {
+			display: inline-flex;
+			width: 30px;
+			height: 30px;
+			margin-right: 15px;
+			background-color: #4e66ff;
+			transform: rotate(45deg);
+			justify-content: center;
+			align-self: center;
+
+			span {
+				transform: rotate(-45deg);
+				display: inline-block;
+				color: #fff;
+			}
+		}
+	}
+
+	@include Responsive(mSM) {
+		.tab-pane {
+			padding: 20px 0 20px 15px;
+			font-size: 16px;
+
+			>span {
+				width: 25px;
+				height: 25px;
+				margin-right: 10px;
+			}
+		}
+	}
+
+	.active {
+		color: #fff;
+
+		>span {
+			background-color: #fff;
+
+			span {
+				color: #4e66ff;
+			}
+		}
+
+		&:nth-child(1) {
+			border-top-left-radius: $border-radius-1;
+		}
+
+		&:nth-child(2) {
+			border-top-right-radius: $border-radius-1;
+		}
+		background: linear-gradient(225deg, #8e3dff 3.21%, #4e66ff 90.77%);
+	}
+}
+
+.create-job {
+	$gap: 1rem 2rem;
+
+	@apply p-5 grid relative
+		grid-cols-1 md:grid-cols-2 xl:grid-cols-3;
+	gap: $gap;
+	grid-template-areas:
+		"title"
+		"platform"
+		"service"
+		"package"
+		"advanced"
+		"daterange"
+		"daterange"
+		"time"
+		"quantity"
+		"price"
+		"link"
+		"description"
+		"countup"
+		"button";
+
+	@screen md {
+		grid-template-areas:
+			"title title"
+			"platform service"
+			"package ."
+			"advanced advanced"
+			"daterange daterange"
+			"time link"
+			"quantity price"
+			"description description"
+			"countup countup"
+			"button button";
+	}
+
+	@screen xl {
+		grid-template-areas:
+			"title title title"
+			"platform service package"
+			"advanced advanced advanced"
+			"daterange daterange time"
+			"quantity price link"
+			"description description description"
+			"countup countup countup"
+			"button button button";
+	}
+
+	$areas: title, platform, service, package, advanced, daterange, time,
+		quantity, price, link, description, countup;
+
+	@each $area in $areas {
+		.#{$area} {
+			grid-area: $area;
+		}
+	}
+
+	.toggle-collapse {
+		@apply flex items-center gap-2 pb-2;
+
+		& > span {
+			@apply font-bold;
+			color: #8e3dff;
+		}
+
+		& > i {
+			color: #8e3dff;
+		}
+	}
+
+	.advanced-content {
+		@apply grid mt-2
+			grid-cols-1 md:grid-cols-2 xl:grid-cols-3;
+		gap: $gap;
+		grid-template-areas:
+			"area"
+			"gender"
+			"age"
+			"career"
+			"education";
+
+		@screen md {
+			grid-template-areas:
+				"area area"
+				"age age"
+				"gender education"
+				"career career";
+		}
+
+		@screen xl {
+			grid-template-areas:
+				"area area ."
+				"age age ."
+				"gender education ."
+				"career career .";
+		}
+
+		$advanced: area, gender, career, education, age;
+
+		@each $area in $advanced {
+			.#{$area} {
+				grid-area: $area;
+			}
+		}
+	}
+
+	.time {
+		@apply grid;
+		grid-template-columns: minmax(0, 1fr) minmax(90px, auto);
+	}
+
+	.daterange {
+		@apply grid grid-cols-1 md:grid-cols-2;
+		gap: $gap;
+	}
+
+	.countup {
+		@apply grid gap-4 text-center
+			p-4 rounded-xl text-xl font-semibold;
+		background: #eee2ff; /* rgba(142, 61, 255, 0.15) */
+		color: #8e3dff;
+
+		&__candidate > b {
+			@apply text-2xl;
+		}
+
+		&__total {
+			@apply text-2xl;
+
+			& > b {
+				@apply text-4xl;
+			}
+		}
+
+		& b {
+			color: #4834d4;
+		}
+	}
+
+	.tooltip {
+		@apply absolute -right-6 top-1/2;
+		transform: translateY(-50%);
+		font-size: 20px;
+		color: #8e3dff;
+	}
+
+	.button-group {
+		@apply grid grid-cols-1 sm:grid-cols-2
+			justify-center mt-6 gap-4;
+		grid-area: button;
+
+		.cancel-button {
+			@include button;
+			@apply text-white font-bold uppercase
+				bg-red-500 hover:bg-red-700 justify-self-end;
+		}
+
+		.continue-button {
+			@include button;
+			@apply text-white font-bold uppercase
+				bg-blue-500 hover:bg-blue-700 justify-self-start;
+		}
+	}
+}
+
+.step-job {
+	@apply grid grid-cols-1 px-5 py-8 gap-5;
+	color: #4e66ff;
+
+	.wrapper-step {
+		@apply grid grid-cols-1 gap-8
+			px-5 py-8;
+		border: 2px dashed #8e3dff;
+		border-radius: $border-radius-1;
+		background-color: #8e3dff25;
+
+		&:only-child {
+			@apply bg-gray-500;
+		}
+
+		.order-step {
+			@apply flex justify-between;
+
+			>span {
+				@apply font-bold;
+			}
+		}
+
+		.delete-button {
+			@apply flex gap-0.5 items-center font-bold;
+
+			& > i {
+				font-size: 21px;
+			}
+		}
+
+		.single-col {
+			@apply grid gap-x-10 gap-y-2.5
+				grid-cols-1 items-center;
+
+			@screen md {
+				grid-template-columns: 90px auto;
+			}
+
+			>label {
+				@apply font-bold;
+			}
+
+			input {
+				@apply px-4 py-1.5 text-gray-900
+					text-sm rounded;
+			}
+		}
+
+		.error-text {
+			@apply absolute block mt-1 text-xs font-semibold;
+			color: $cl-error;
+		}
+
+		.content {
+			color: var(--black);
+
+			>span {
+				@apply font-bold;
+			}
+		}
+	}
+
+	.add-step {
+		@apply grid justify-center items-center mx-auto
+			text-indigo-500 hover:text-indigo-700;
+
+		& > i {
+			font-size: 64px;
+		}
+	}
+
+	.button-group {
+		@apply grid grid-cols-1 sm:grid-cols-2
+			justify-center gap-4;
+
+		.go-back-button {
+			@include button;
+			@apply text-white font-bold uppercase
+				bg-red-500 hover:bg-red-700 justify-self-end;
+		}
+
+		.create-button {
+			@include button;
+			@apply text-white font-bold uppercase
+				bg-blue-500 hover:bg-blue-700 justify-self-start;
+		}
+	}
+}

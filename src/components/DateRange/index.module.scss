@@ -1,0 +1,43 @@
+@import "@styles/variables.scss";
+
+.body {
+	@apply relative pb-4;
+
+	& > div {
+		@apply flex items-center mt-2 pl-2 py-1.5;
+		background-color: $cl-gray-2;
+		border: 1px solid $cl-gray-2;
+		border-radius: 10px;
+		transition: 0.5s;
+
+		&:active,
+		&:hover,
+		&:focus {
+			border-color: $cl-primary;
+		}
+	}
+}
+
+.label {
+	@apply relative text-sm font-bold;
+}
+
+// Style Antd Range Picker
+.date-picker {
+	@apply w-full;
+
+	input {
+		@apply text-sm font-medium;
+	}
+}
+
+.date-picker-dropdown {
+	border-radius: $border-radius-1;
+	box-shadow: $shadow-1;
+	padding: 0;
+}
+
+.text-error {
+	@apply absolute text-xs font-medium bottom-0 left-0;
+	color: $cl-error;
+}

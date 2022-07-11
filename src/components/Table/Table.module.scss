@@ -1,0 +1,12 @@
+.wrapper {
+    
+}
+
+@media screen and (min-width: 1280px) {
+    .wrapper {
+        background-image: url('../../assets/img/table/background-violet.png');
+        background-position: top right;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+}

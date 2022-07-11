@@ -1,0 +1,162 @@
+@use "sass:math";
+@import "@styles/variables.scss";
+
+.job-detail {
+	@apply p-4 lg:sticky top-24;
+	background-color: #fff;
+	border-radius: 10px;
+
+	@screen lg {
+		box-shadow: $shadow;
+	}
+
+	&__detail {
+		@apply flex -mx-1;
+
+		> * {
+			@apply mx-1;
+		}
+	}
+
+	&__avatar {
+		@apply flex-none;
+
+		img {
+			border-radius: 10px;
+		}
+	}
+
+	&__info {
+		@apply flex-1;
+
+		h2 {
+			@apply flex overflow-ellipsis overflow-hidden;
+			color: $cl-primary;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
+			word-break: break-word;
+		}
+
+		& > div {
+			@apply grid md:grid-cols-3 -mx-1;
+
+			> * {
+				@apply mx-1;
+			}
+		}
+
+		&-user {
+			@apply md:row-span-2;
+
+			span {
+				@apply text-xs;
+			}
+		}
+	}
+
+	&__highlight {
+		@apply grid md:grid-cols-3 -mx-1 xl:-mx-5 mt-2;
+
+		div {
+			@apply flex flex-wrap items-center justify-center
+				mt-2 mx-1 xl:mx-5 px-2 py-1 rounded;
+			background-color: #eae4f2;
+
+			> * + * {
+				@apply ml-1;
+			}
+
+			> i {
+				color: $cl-primary;
+			}
+		}
+	}
+
+	&__separate {
+		height: 1px;
+		margin-top: 20px;
+		background-color: rgb(184 184 184 / 50%);
+	}
+
+	&__description {
+		@apply text-sm mt-4;
+
+		&-content {
+			@apply text-xs font-medium;
+			margin-top: 5px;
+			max-height: clamp(40px, 100vh - 630px, 150px);
+			overflow: hidden auto;
+			margin-right: -8px;
+			padding-right: 8px;
+
+			&::-webkit-scrollbar {
+				appearance: none;
+				background-color: #eee;
+				width: 4px;
+				height: 8px;
+			}
+
+			&::-webkit-scrollbar-thumb {
+				background-color: rgb(142 61 255 / 50%);
+			}
+
+			p {
+				text-align: justify;
+				padding-right: 8px;
+			}
+		}
+	}
+
+	&__requirement {
+		@apply text-sm mt-4;
+
+		&-list {
+			@apply mt-1 text-xs font-medium;
+		}
+
+		&-item {
+			@apply inline-block mr-1 mt-1 py-1.5 px-2.5;
+			border-radius: 10px;
+			background-color: $cl-gray-2;
+
+			&:last-child {
+				margin-right: 0;
+			}
+		}
+	}
+
+	&__reason {
+		@apply text-sm mt-4;
+
+		&-content {
+			@apply text-xs font-semibold;
+			color: $cl-error;
+			text-align: justify;
+			word-break: break-word;
+		}
+	}
+}
+
+.group-button {
+	@apply flex flex-col sm:flex-row justify-center md:justify-end;
+
+	> button + button {
+		@apply sm:ml-5;
+	}
+
+	.button-work-job {
+		@include globalButton(primary);
+		@apply w-full md:w-40 max-w-full mt-4;
+	}
+
+	.button-cancel-job {
+		@include globalButton;
+		@apply w-full md:w-40 max-w-full mt-4;
+	}
+
+	.button-confirm-job {
+		@include globalButton;
+		@apply w-full md:w-40 max-w-full mt-4;
+	}
+}

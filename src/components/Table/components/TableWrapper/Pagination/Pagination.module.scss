@@ -1,0 +1,38 @@
+.wrapper {
+    @apply flex items-center justify-between;
+    background: #F2F2F2;
+    border-radius: 14px;
+    height: 30px;
+    font-size: 14px;
+    margin-top: 27px;
+    > button {
+        @apply border-0 w-full;
+        background: transparent;
+        @apply flex items-center justify-center;
+        cursor: pointer;
+        > i {
+            font-size: 14px;
+            color: #9593A0;
+            &:hover {
+                font-weight: bold;
+                color: #2c3dac;
+                font-size: 20px;
+            }
+        }
+    }
+}
+
+.number {
+    background: linear-gradient(225deg, #8E3DFF 3.21%, #4E66FF 90.77%) !important;
+    border-radius: 0 !important;
+    color: white !important;
+    height: 100%;
+    font-weight: bold;
+}
+
+@media screen and (min-width: 576px) {
+    .wrapper {
+        max-width: 40%;
+        margin-left: auto;
+    }
+}

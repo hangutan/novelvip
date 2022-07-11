@@ -1,0 +1,38 @@
+@import "@styles/variables.scss";
+
+.icon {
+	@apply min-h-full grid;
+	background-color: #dfdfdf;
+
+	&__container {
+		@apply container relative p-1 my-8 mx-auto grid
+			items-center w-full bg-white rounded-2xl;
+		grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+	}
+
+	&__item {
+		@apply grid items-center p-3 h-full m-3
+			bg-blue-50 rounded-xl cursor-pointer;
+		transition: all 0.3s ease;
+
+		&:hover {
+			@apply bg-blue-100;
+		}
+
+		&:hover > i {
+			@apply p-0;
+			font-size: 60px;
+		}
+
+		& > i {
+			@apply p-3 mb-2;
+			color: #4c1d95;
+			font-size: 36px;
+			transition: all 0.15s ease;
+		}
+
+		& > span {
+			@apply text-sm font-semibold text-center;
+		}
+	}
+}

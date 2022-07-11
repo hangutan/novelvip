@@ -1,0 +1,151 @@
+@import "@styles/variables.scss";
+
+.bg_tab2 {
+	background: $cl-gray-2;
+}
+
+.tab2 {
+	padding: 20px;
+	margin: 0 auto;
+	flex: 1;
+	overflow-y: scroll;
+	overflow: hidden;
+
+	&__main {
+		&-blLeft {
+			margin-right: 20px;
+
+			&-bl1 {
+				background-color: #fff;
+				border-radius: 20px;
+				padding: 30px 20px;
+
+				&-blHeader {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+
+					&-title {
+						font-weight: 700;
+						font-size: 20px;
+						line-height: 25px;
+						color: $cl-primary;
+					}
+				}
+
+				&-blButtonRight {
+					display: flex;
+
+					&-button {
+						border: 1px solid #f5f5f5;
+						padding: 5px 10px;
+						border-radius: 6px;
+						margin-left: 10px;
+						font-weight: bold;
+
+						&-bgYellow {
+							background-color: $cl-warning;
+						}
+					}
+
+					&-button i {
+						color: #4e66ff;
+					}
+				}
+
+				&-blText {
+					padding-top: 15px;
+					font-size: 30px;
+
+					&-iconMoney {
+						font-weight: 400;
+						font-size: 40px;
+						line-height: 50px;
+						color: #c60bcc;
+					}
+
+					&-money {
+						font-weight: 700;
+						font-size: 40px;
+						line-height: 50px;
+						color: #c60bcc;
+					}
+				}
+			}
+
+			&-bl2 {
+				background-color: #fff;
+				padding: 30px 20px;
+				border-radius: 20px;
+				margin-top: 20px;
+			}
+		}
+
+		&-blRight {
+			&-blButton {
+				display: flex;
+				justify-content: space-between;
+				margin-bottom: 10px;
+
+				&-textLeft {
+					font-weight: bold;
+					font-size: 14px;
+					line-height: 18px;
+					color: #000;
+				}
+
+				&-textRight {
+					cursor: pointer;
+					text-decoration: underline;
+					font-weight: 500;
+					font-size: 14px;
+					line-height: 18px;
+					color: $cl-primary;
+				}
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	.tab2 {
+		&__main {
+			&-blLeft {
+				margin-right: 0;
+			}
+
+			&-blRight {
+				margin-top: 20px;
+			}
+		}
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	.tab2 {
+		&__main {
+			&-blLeft {
+				&-bl1 {
+					&-blHeader {
+						display: block;
+					}
+
+					&-blButtonRight {
+						margin-top: 15px;
+
+						&-button {
+							margin-left: 0;
+							width: 48%;
+							height: 44px;
+							align-items: center;
+
+							&-mr2 {
+								margin-right: 4%;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,54 @@
+@import "@styles/variables.scss";
+
+.slider {
+	@apply relative pb-4;
+	grid-template-columns: 40px 1fr 40px;
+
+	span {
+		@apply font-semibold text-center;
+	}
+
+	.content {
+		@apply grid items-center mt-1;
+		grid-template-columns: 40px 1fr 40px;
+
+		&.disable {
+			pointer-events: none;
+			opacity: 0.5;
+		}
+
+		[class~="ant-slider-rail"] {
+			background-color: $cl-white !important;
+		}
+
+		[class~="ant-slider-track"] {
+			background-color: $cl-primary !important;
+		}
+
+		[class~="ant-slider-handle"] {
+			border-color: $cl-primary !important;
+
+			&:focus {
+				box-shadow: 0 0 0 5px rgb(120 21 255 / 20%);
+			}
+		}
+	}
+
+	.title {
+		@apply relative text-sm font-bold w-full;
+	}
+
+	.switch {
+		@apply absolute top-0 right-0 flex
+			items-center text-sm font-bold;
+
+		> button {
+			@apply mr-1;
+		}
+	}
+}
+
+.text-error {
+	@apply absolute text-xs font-medium bottom-0 left-0;
+	color: $cl-error;
+}

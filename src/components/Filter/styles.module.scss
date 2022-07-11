@@ -1,0 +1,103 @@
+@import "@styles/variables.scss";
+
+.filter-control {
+	@apply grid items-center text-xs md:text-sm;
+
+	@include Responsive(LG) {
+		grid-template-columns: minmax(0, 4fr) minmax(0, 3fr) minmax(0, 2fr);
+	}
+
+	& > * + * {
+		@apply lg:ml-2;
+
+		@include Responsive(maxLG) {
+			@apply mt-2;
+		}
+	}
+}
+
+.select {
+	@apply grid items-center;
+	grid-template-columns: auto minmax(0, 1fr);
+
+	&__wrapper {
+		@apply grid grid-cols-3;
+	}
+
+	& + & {
+		@apply ml-2;
+	}
+
+	& i {
+		color: $cl-primary;
+	}
+
+	&__prefix {
+		font-size: 16px;
+
+		@include Responsive(maxMD) {
+			font-size: 10px;
+		}
+	}
+
+	[class~="ant-select-arrow"],
+	[class~="ant-select-clear"] {
+		@apply w-6 h-6 right-1.5 -mt-3;
+		background-color: $cl-gray-2;
+	}
+
+	[class~="ant-select-selection-item"],
+	[class~="ant-select-selection-placeholder"] {
+		@apply font-semibold;
+		color: $cl-text;
+	}
+}
+
+.select-list {
+	@apply -ml-2;
+}
+
+.select-dropdown {
+	@apply rounded-lg;
+}
+
+.search {
+	@apply flex items-center rounded-full py-1.5 pl-2 pr-4;
+	background-color: $cl-white;
+
+	& > i {
+		@apply pl-2.5 border-l;
+		color: $cl-primary;
+		font-size: 30px;
+	}
+}
+
+.slider {
+	&__text {
+		@apply flex justify-between font-medium;
+	}
+
+	[class~="ant-slider"] {
+		margin: 5px 30px;
+
+		@include Responsive(MD) {
+			margin: 5px 6px;
+		}
+	}
+
+	[class~="ant-slider-rail"] {
+		background-color: $cl-white !important;
+	}
+
+	[class~="ant-slider-track"] {
+		background-color: $cl-primary !important;
+	}
+
+	[class~="ant-slider-handle"] {
+		border-color: $cl-primary !important;
+
+		&:focus {
+			box-shadow: 0 0 0 5px rgb(120 21 255 / 20%);
+		}
+	}
+}

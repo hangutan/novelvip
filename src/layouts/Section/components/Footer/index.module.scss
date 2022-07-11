@@ -1,0 +1,68 @@
+@import "@styles/variables.scss";
+
+.footer {
+	@apply hidden lg:block;
+	box-shadow: $shadow;
+
+	&__wrapper {
+		background-color: #fff;
+	}
+
+	&__container {
+		@apply lg:container py-7 mx-auto w-full
+			flex justify-between;
+	}
+
+	&__des {
+		@apply w-full mx-4;
+		max-width: 300px;
+
+		p {
+			@apply text-base;
+		}
+	}
+
+	&__menu {
+		@apply w-full mx-4;
+		max-width: 300px;
+	}
+
+	&__download {
+		@apply w-full mx-4;
+		max-width: 200px;
+
+		& a {
+			@apply block mb-3;
+		}
+	}
+
+	&__title {
+		@apply text-lg font-bold mb-2;
+	}
+
+	&__item {
+		@apply text-base;
+
+		&-link {
+			&:hover,
+			&:focus {
+				@apply underline;
+				color: inherit;
+			}
+		}
+	}
+
+	&__copyright {
+		@apply text-sm font-medium text-center h-11
+			flex items-center justify-center;
+		background-color: #eae4f2;
+
+		& > span {
+			@apply text-2xl mx-1;
+		}
+	}
+
+	&__social {
+		@apply space-x-4 xl:space-x-6 mt-4;
+	}
+}

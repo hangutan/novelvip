@@ -1,0 +1,44 @@
+@import "@styles/variables.scss";
+
+%button {
+	@apply border border-solid font-bold rounded-lg z-20 flex
+		text-sm p-2.5 m-1.5 mb-2.5
+		md:text-base md:px-5 md:m-2 md:mb-3.5;
+	transition: 0.3s;
+}
+
+.tab {
+	@apply flex overflow-x-auto mx-auto;
+	width: calc(100% - 1.5rem);
+
+	&__blButton {
+		@apply relative flex-none flex overflow-hidden;
+
+		.background {
+			@apply absolute inset-x-0 top-0 bottom-px z-10;
+			border-radius: 10px 10px 0 0;
+			background-color: $cl-gray-2;
+			transition: 0.3s;
+			transform: translateY(101%);
+		}
+
+		& > button {
+			@extend %button;
+			border-color: $cl-text;
+			background-color: $cl-white;
+			color: $cl-text;
+		}
+
+		&.active {
+			.background {
+				transform: translateY(0);
+			}
+
+			& > button {
+				border-color: transparent;
+				background-color: $cl-primary;
+				color: $cl-white;
+			}
+		}
+	}
+}

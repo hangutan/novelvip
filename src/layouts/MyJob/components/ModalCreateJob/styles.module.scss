@@ -1,0 +1,334 @@
+@import "@styles/variables.scss";
+
+.wrapper-create-job {
+	@apply h-full max-w-none top-0 p-0 m-0;
+	background: #fff;
+	overflow: hidden;
+
+	div[class~="ant-modal-content"] {
+		@apply p-0 h-full w-full;
+		background-color: $cl-white;
+	}
+
+	div[class~="ant-modal-body"] {
+		@apply p-0 h-full overflow-x-hidden overflow-y-auto;
+	}
+
+	.close-icon {
+		width: 20px;
+
+		&:hover,
+		&:focus {
+			background: #ccc;
+			padding: 2px;
+			border-radius: 3px;
+		}
+	}
+
+	.button-group {
+		@apply flex flex-1 justify-end my-4 items-end;
+
+		button + button {
+			@apply ml-4;
+		}
+
+		.cancel-button {
+			@include globalButton;
+			@apply w-full;
+			max-width: 300px;
+		}
+
+		.continue-button {
+			@include globalButton(primary, 9px 20px, true, true);
+			@apply w-full;
+			max-width: 300px;
+		}
+
+		.create-button {
+			@include globalButton(primary);
+			@apply w-full;
+			max-width: 300px;
+		}
+	}
+
+	.countup {
+		@apply hidden lg:block mt-8 p-4 rounded-xl;
+		background: #fff298;
+		color: $cl-black;
+
+		&.mobile {
+			@apply block lg:hidden;
+		}
+
+		&__title {
+			@apply text-base font-bold;
+		}
+
+		&__total {
+			@apply flex items-center justify-between
+				mt-3 text-xl lg:text-3xl font-medium;
+
+			span {
+				@apply font-bold text-2xl;
+
+				@include Responsive(LG) {
+					font-size: 2.5rem;
+					line-height: 2.75rem;
+				}
+			}
+		}
+
+		&__candidate {
+			@apply mt-3 text-base font-medium;
+		}
+	}
+}
+
+.create-job {
+	&__container {
+		@apply container mx-auto grid p-2.5 min-h-full;
+		grid-template-rows: auto minmax(0, 1fr);
+	}
+
+	&__title {
+		@apply text-center text-xl sm:text-2xl lg:text-4xl font-bold my-2 lg:my-10;
+		color: #c60bcc;
+	}
+
+	&__wrapper {
+		@apply grid -mx-3;
+
+		@include Responsive(LG) {
+			grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+		}
+	}
+}
+
+.tab-create {
+	@apply relative lg:sticky flex lg:block
+		justify-center mb-20 lg:mb-0;
+
+	@include Responsive(LG) {
+		top: 138px;
+	}
+
+	.tab-pane {
+		@apply flex select-none flex-1 lg:flex-auto;
+		margin: 8px 0;
+
+		.step {
+			@apply relative flex items-center justify-center w-full lg:w-auto mr-0 lg:mr-12;
+
+			&::before {
+				@apply hidden lg:block absolute w-0.5;
+				top: -4px;
+				bottom: -4px;
+				content: "";
+				left: 19px;
+				background-color: #a6a6a6;
+				transition: 0.3s;
+			}
+
+			&::after {
+				@apply block lg:hidden absolute h-0.5;
+				left: 0;
+				right: 0;
+				content: "";
+				top: 19px;
+				background-color: #a6a6a6;
+				transition: 0.3s;
+			}
+
+			span {
+				@apply block h-10 w-10 rounded-full text-center z-10;
+				font-size: 18px;
+				line-height: 40px;
+				font-weight: bold;
+				background-color: $cl-white;
+				border: 1px solid #a6a6a6;
+				color: #a6a6a6;
+				transition: 0.3s;
+			}
+		}
+
+		.des {
+			@apply hidden lg:block flex-1 p-5
+				text-xs lg:text-base font-medium;
+			border: 1px solid $cl-gray-2;
+			border-radius: 10px;
+			transition: 0.3s;
+
+			@include Responsive(maxLG) {
+				@apply absolute top-full left-0 right-0;
+			}
+
+			p {
+				@apply text-sm lg:text-lg font-bold;
+			}
+		}
+
+		&.active {
+			@apply cursor-pointer;
+
+			.step {
+				&::before,
+				&::after {
+					background-color: $cl-primary;
+				}
+
+				span {
+					background-color: $cl-warning;
+					border-color: $cl-primary;
+					color: $cl-primary;
+				}
+			}
+
+			.des {
+				background-color: $cl-gray-2;
+			}
+		}
+
+		&.show .des {
+			@include Responsive(maxLG) {
+				@apply block;
+			}
+		}
+	}
+}
+
+.step1 {
+	@apply grid lg:grid-cols-3 -mx-2;
+	grid-template-rows: repeat(3, auto) 1fr;
+
+	> div {
+		@apply mx-2;
+	}
+
+	.title,
+	.link {
+		@apply lg:col-span-3;
+	}
+
+	.working-time {
+		label {
+			@apply text-sm font-bold;
+		}
+
+		> div {
+			@apply grid;
+			grid-template-columns: auto 110px;
+		}
+
+		.time > [class*="ant-input"] {
+			@apply rounded-r-none;
+		}
+
+		.select > [class*="ant-select"] {
+			@apply rounded-l-none;
+		}
+	}
+
+	.tooltip {
+		@apply absolute -right-6 top-1/2;
+		transform: translateY(-50%);
+		font-size: 20px;
+		color: #8e3dff;
+	}
+}
+
+.step2 {
+	@apply grid;
+	grid-template-rows: repeat(5, auto) 1fr;
+
+	[class~="ant-select"] {
+		box-shadow: $shadow;
+	}
+
+	.item {
+		@apply relative text-sm font-bold p-2.5 mb-2;
+		border-radius: 10px;
+		background-color: $cl-gray-2;
+
+		&__select {
+			@apply pb-0;
+		}
+	}
+
+	.switch {
+		@apply absolute top-2.5 right-2.5 flex items-center;
+
+		> button {
+			@apply mr-1;
+		}
+	}
+}
+
+.step3 {
+	@apply grid;
+	grid-template-rows: auto 1fr;
+}
+
+.step4 {
+	@apply grid grid-cols-1;
+
+	.wrapper-step {
+		@apply p-5 mb-6;
+		border: 1px solid #000;
+		border-radius: 10px;
+
+		.order-step {
+			@apply flex justify-between items-center;
+
+			> span {
+				@apply text-lg font-bold;
+				color: $cl-primary;
+			}
+		}
+
+		.delete-button {
+			@apply flex items-center font-bold;
+
+			& > i {
+				font-size: 21px;
+			}
+		}
+
+		.single-col {
+			@apply mt-2;
+
+			> label {
+				@apply font-bold;
+			}
+
+			input {
+				@apply px-6 py-3 text-sm;
+				background-color: $cl-gray-2;
+				border-radius: 10px;
+			}
+		}
+
+		.content {
+			@apply mt-2;
+
+			&__body {
+				@apply p-2.5;
+				background-color: $cl-gray-2;
+				border-radius: 10px;
+			}
+
+			> span {
+				@apply font-bold;
+			}
+		}
+
+		.error-text {
+			@apply block text-xs font-semibold;
+			color: $cl-error;
+		}
+	}
+
+	.add-step {
+		@include globalButton(warning);
+		@apply ml-auto;
+	}
+}

@@ -1,0 +1,74 @@
+@import "@styles/variables.scss";
+
+.userAuthen {
+	&__item {
+		margin-top: 15px;
+
+		&-label {
+			margin-bottom: 5px;
+			font-size: 14px;
+			font-weight: bold;
+		}
+
+		&-input {
+			@apply truncate;
+			margin-right: 20px;
+			width: 100%;
+			background: #fff;
+			border: 1px solid #d2d6da;
+			border-radius: 8px;
+			height: 35px;
+			padding-left: 11px;
+			color: #252f40;
+			font-size: 14px;
+
+			&.error {
+				border: 1px solid #f1002b;
+			}
+		}
+
+		&-select {
+			margin-right: 20px;
+			font-weight: normal;
+			width: 100%;
+
+			>div {
+				border-radius: 8px !important;
+				height: 35px !important;
+			}
+
+			&.error {
+				>div {
+					border: 1px solid #f1002b !important;
+				}
+			}
+		}
+
+		&-textNote {
+			font-size: 12px;
+			color: #d93437;
+		}
+	}
+
+	&.mrTop-0 {
+		margin-top: 0;
+	}
+}
+
+.btn_open {
+	background: linear-gradient(225deg, #8e3dff 3.21%, #4e66ff 90.77%);
+	border-radius: 10px;
+	color: white;
+	padding: 16px 11px;
+	border: 0;
+	font-weight: bold;
+	height: 52px;
+	margin-right: 20px;
+}
+
+@include Responsive(mSM) {
+	.btn_open {
+		margin-right: 0;
+		margin-bottom: 10px;
+	}
+}

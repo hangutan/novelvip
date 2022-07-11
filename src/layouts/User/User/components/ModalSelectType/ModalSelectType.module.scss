@@ -1,0 +1,42 @@
+@import "@styles/variables.scss";
+
+.wrapper-select {
+	@apply p-5;
+}
+
+.select {
+	@apply flex mt-5;
+
+	&__btn-bank {
+		@apply flex p-2.5 mr-2;
+		background-color: #f5f5f5;
+		border-radius: 20px;
+		opacity: 0.5;
+		transition: 0.3s;
+
+		&:hover,
+		&.active {
+			opacity: 1;
+			background-color: rgb(31 171 137 / 25%);
+		}
+	}
+
+	&__btn-momo {
+		@apply flex p-2.5 ml-2;
+		background-color: #f5f5f5;
+		border-radius: 20px;
+		opacity: 0.5;
+		transition: 0.3s;
+
+		&:hover,
+		&.active {
+			opacity: 1;
+			background-color: rgb(165 31 104 / 25%);
+		}
+	}
+
+	&__continue {
+		@include globalButton;
+		@apply w-full mt-4;
+	}
+}

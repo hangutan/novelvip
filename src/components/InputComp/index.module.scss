@@ -1,0 +1,30 @@
+@import "@styles/variables.scss";
+
+.input {
+	&__header {
+		@apply relative;
+	}
+
+	&__title {
+		@apply text-sm font-bold;
+	}
+
+	&__subtitle {
+		@apply text-xs font-bold;
+		color: $cl-error;
+	}
+
+	&__wrapper {
+		& > input,
+		& > textarea, {
+			@apply px-4 py-2 mt-3 w-full border-none overflow-hidden;
+			border-radius: $border-radius-1;
+			transition: height 500ms;
+		}
+
+		& [class~="ant-input-affix-wrapper"] {
+			@apply px-3 py-2 mt-3 w-full border-none;
+			border-radius: $border-radius-1;
+		}
+	}
+}

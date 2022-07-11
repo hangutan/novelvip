@@ -1,0 +1,118 @@
+@import "@styles/variables.scss";
+
+.bgInviteFriend {
+	margin: 0 auto;
+	background: $cl-gray-2;
+	max-width: 100%;
+	width: 850px;
+	height: 481px;
+	padding: 40px;
+	border-radius: 10px;
+	margin-top: 120px;
+	align-items: center;
+	text-align: center;
+
+	&__title {
+		font-weight: bold;
+		font-size: 40px;
+		line-height: 50px;
+		color: $cl-primary;
+		text-shadow: 0 0 10px rgb(219 118 255 / 73%);
+		text-align: center;
+	}
+
+	&__content {
+		margin-top: 31px;
+
+		&-imgLeft {
+			padding-left: 30px;
+		}
+
+		&-ctRight {
+			padding-left: 40px;
+
+			&-text {
+				padding-left: 20px;
+				font-size: 16px;
+				line-height: 20px;
+				color: $cl-text;
+			}
+
+			&-textBold {
+				font-weight: bold;
+				font-size: 20px;
+				color: $cl-primary;
+			}
+		}
+	}
+
+	&__dlFlex {
+		display: flex;
+		align-items: center;
+	}
+
+	&__btnFooter {
+		margin-top: 30px;
+		width: 100%;
+		height: 44px;
+		background: $cl-primary;
+		border-radius: 10px;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+
+		&-blBtn {
+			align-items: center;
+			display: flex;
+			justify-content: center;
+		}
+
+		&-icon {
+			font-weight: bold;
+			color: #fff;
+			line-height: 44px;
+		}
+
+		&-text {
+			padding-left: 10px;
+			font-weight: bold;
+			color: #fff;
+			line-height: 44px;
+		}
+	}
+}
+
+@include Responsive(mMD) {
+	.bgInviteFriend {
+		height: auto;
+		padding: 20px;
+		margin-top: 70px;
+
+		&__title {
+			font-weight: 700;
+			font-size: 20px;
+		}
+
+		&__content {
+			display: block;
+
+			&-ctRight {
+				padding-left: 0;
+
+				&-text {
+					padding-left: 20px;
+					font-size: 14px;
+					line-height: 20px;
+				}
+
+				&-textBold {
+					font-size: 16px;
+				}
+			}
+		}
+
+		&__dlFlex {
+			margin-bottom: 5px;
+		}
+	}
+}

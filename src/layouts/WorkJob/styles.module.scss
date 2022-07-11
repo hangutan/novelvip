@@ -1,0 +1,172 @@
+@import "@styles/variables.scss";
+
+.wrapper-detail.active {
+	background-color: $cl-gray-2;
+}
+
+.wrapper-list-step {
+	@apply container mx-auto my-4 px-4;
+}
+
+.wrapper-step {
+	@apply container mx-auto my-4 px-4
+		flex flex-col lg:flex-row items-start;
+}
+
+.title {
+	@apply font-bold text-lg mb-4;
+}
+
+.card__list {
+	@apply flex items-start overflow-x-auto -mb-2 pb-2;
+
+	.card__item {
+		@apply mt-0;
+
+		@include Responsive(LG) {
+			width: calc(50% - 1rem);
+		}
+	}
+
+	.card__item + .card__item {
+		@apply ml-8;
+	}
+}
+
+.card__item {
+	@apply flex-none p-4 w-full mt-5 lg:mt-0 lg:w-3/5 xl:w-1/2;
+	border: 1px solid #000;
+	border-radius: 10px;
+
+	.step {
+		@apply flex justify-between text-lg uppercase font-bold;
+		color: $cl-primary;
+	}
+
+	.content {
+		@apply mt-4 p-4 text-sm overflow-hidden;
+		background-color: $cl-gray-2;
+		border-radius: 10px;
+
+		& > h3 {
+			@apply text-lg font-bold mb-2;
+		}
+
+		& > h4 {
+			@apply font-bold my-2;
+		}
+
+		&__footer {
+			@apply grid;
+			grid-template-columns: minmax(0, 1fr) 110px;
+
+			& > span {
+				@apply flex-1 px-4 py-3 mr-2 truncate;
+				background-color: #fff;
+				border-radius: 10px;
+			}
+		}
+	}
+
+	.copy {
+		@include globalButton(primary);
+	}
+}
+
+.tab-step {
+	@apply relative flex lg:flex-col overflow-x-auto
+		mx-auto lg:mx-0 -mb-1 pb-1 max-w-full;
+
+	@include Responsive(LG) {
+		margin-left: calc(20% - 110px);
+		margin-right: 70px;
+	}
+
+	@include Responsive(XL) {
+		margin-left: calc(25% - 110px);
+		margin-right: 70px;
+	}
+
+	&::-webkit-scrollbar {
+		width: 4px;
+		height: 4px;
+	}
+
+	.tab-pane {
+		@apply relative flex-none select-none
+			flex justify-center items-center w-20 lg:w-full h-10 lg:h-20;
+
+		&::before {
+			@apply hidden lg:block absolute w-0.5;
+			top: 0;
+			bottom: 0;
+			content: "";
+			left: 50%;
+			background-color: #a6a6a6;
+			transform: translateX(-50%);
+			transition: 0.3s;
+		}
+
+		&::after {
+			@apply block lg:hidden absolute h-0.5;
+			left: 0;
+			right: 0;
+			content: "";
+			top: 19px;
+			background-color: #a6a6a6;
+			transition: 0.3s;
+		}
+
+		span {
+			@apply block h-10 w-10 rounded-full text-center z-10;
+			font-size: 18px;
+			line-height: 40px;
+			font-weight: bold;
+			background-color: $cl-white;
+			border: 1px solid #a6a6a6;
+			color: #a6a6a6;
+			transition: 0.3s;
+		}
+
+		&.active {
+			@apply cursor-pointer;
+
+			&::before,
+			&::after {
+				background-color: $cl-primary;
+			}
+
+			span {
+				background-color: $cl-warning;
+				border-color: $cl-primary;
+				color: $cl-primary;
+			}
+		}
+	}
+}
+
+.action {
+	@apply container mx-auto my-4 p-4 flex justify-end;
+
+	> button + button {
+		@apply ml-4 lg:ml-8;
+	}
+}
+
+.button {
+	&__back {
+		@include globalButton;
+		@apply w-full md:w-80 max-w-full;
+	}
+
+	&__start,
+	&__continue {
+		@include globalButton(primary, 9px 20px, true, true);
+		@apply w-full md:w-80 max-w-full;
+	}
+
+	&__report {
+		@include globalButton(primary);
+		@apply w-full md:w-80 max-w-full;
+	}
+}
